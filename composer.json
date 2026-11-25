@@ -1,6 +1,6 @@
 {
-    "name": "david-grosskost/suitecrm-ext-exemple",
-    "description": "Extension d'exemple du modèle des extensions SuiteCRM.",
+    "name": "david-grosskost/suitecrm-ext-contact-lastname-uppercase",
+    "description": "Nom de famille des contacts SuiteCRM toujours en majuscules, y compris pour les contacts déjà présents.",
     "type": "suitecrm-extension",
     "license": "proprietary",
     "require": {
@@ -11,8 +11,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "SuiteCrmExt\\Exemple\\": "legacy/include/exemple/",
-            "SuiteCrmExt\\Exemple\\Tests\\": "tests/"
+            "SuiteCrmExt\\ContactLastnameUppercase\\": "legacy/include/contact-lastname-uppercase/",
+            "SuiteCrmExt\\ContactLastnameUppercase\\Tests\\": "tests/"
         }
     },
     "repositories": [

@@ -1,13 +1,10 @@
-# Exemple (`exemple`)
+# Nom de famille des contacts en majuscules (`contact-lastname-uppercase`)
 
-> **Ce dépôt est le modèle des extensions SuiteCRM.** Pour créer une extension, suivre
-> [Créer une extension](docs/developpement.md#créer-une-extension-à-partir-de-ce-modèle),
-> puis remplacer ce README et les pages de `docs/` par ceux de la nouvelle extension, en
-> gardant leur plan. Supprimer ce paragraphe.
-
-Ce que fait l'extension, en deux ou trois phrases, en mots métier : pour qui, sur quels
-écrans, ce qui change pour l'utilisateur. Exemple : ajoute la forme juridique à la fin du
-nom des comptes (« Dupont SARL »).
+Le nom de famille des contacts s'enregistre toujours en majuscules, même tapé en
+minuscules : « Marie dupont » devient « Marie DUPONT ». Cela vaut pour tous les
+utilisateurs et toutes les façons de créer ou modifier un contact (fiche, importation,
+intégration). Le prénom n'est pas modifié et les accents sont conservés (« LEFÈVRE »). À
+l'installation, les contacts déjà présents sont convertis une fois.
 
 | Fiche | |
 |---|---|
@@ -23,18 +20,18 @@ la liste des paquets disponibles, il suffit de cliquer sur **Installer**. Depuis
 terminal, dans suitecrm-core :
 
 ```bash
-make extensions@install SLUGS="exemple"
+make extensions@install SLUGS="contact-lastname-uppercase"
 ```
 
-La désinstallation se fait au même endroit.
+La désinstallation se fait au même endroit. Les noms déjà mis en majuscules le restent.
 
 ## Documentation
 
 | Page | Contenu |
 |---|---|
-| [Utilisation](docs/utilisation.md) | ce que voient l'administrateur et les utilisateurs, réglages, données de démo |
-| [Fonctionnement](docs/fonctionnement.md) | fichiers, hooks, données en base, installation et désinstallation |
-| [Développement](docs/developpement.md) | créer, vérifier, tester en local, publier une version |
+| [Utilisation](docs/utilisation.md) | ce que voient les utilisateurs, ce qui se passe à l'installation, limites |
+| [Fonctionnement](docs/fonctionnement.md) | fichiers, hook, données en base, installation et désinstallation |
+| [Développement](docs/developpement.md) | vérifier, tests, essayer en local, publier une version |
 
 Les commandes, la CI et le format des extensions sont décrits dans la documentation de
 [suitecrm-devkit](https://github.com/david-grosskost/suitecrm-devkit#documentation).

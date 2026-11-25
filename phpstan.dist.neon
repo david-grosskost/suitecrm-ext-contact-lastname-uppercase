@@ -6,6 +6,7 @@ includes:
 
 parameters:
     paths:
+        - database
         - legacy
         - tests
     tmpDir: .tools/phpstan
