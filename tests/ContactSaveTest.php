@@ -13,14 +13,14 @@ require_once __DIR__ . '/fixtures/SugarBean.php';
 final class ContactSaveTest extends TestCase
 {
     /**
-     * The arguments SuiteCRM passes to before_save (SugarBean::save), and none.
+     * The arguments SuiteCRM 8.10 passes to before_save (SugarBean::save), and none.
      *
      * @return iterable<string, array{mixed}>
      */
     public static function arguments(): iterable
     {
-        yield 'création' => [['check_notify' => false, 'isUpdate' => false]];
-        yield 'modification' => [['check_notify' => false, 'isUpdate' => true]];
+        yield 'enregistrement' => [['check_notify' => false]];
+        yield 'avec notification' => [['check_notify' => true]];
         yield 'sans arguments' => [null];
     }
 
@@ -40,9 +40,10 @@ final class ContactSaveTest extends TestCase
         // purify_html has run on the bean before before_save.
         $bean = self::contact('Hélène', 'lef&egrave;vre &amp;amp; o&#039;brien');
 
-        (new ContactSave())->beforeSave($bean, 'before_save', ['check_notify' => false, 'isUpdate' => true]);
+        (new ContactSave())->beforeSave($bean, 'before_save', ['check_notify' => false]);
 
-        self::assertSame("LEFÈVRE & O'BRIEN", self::field($bean, 'last_name'));
+        // Encoded again, as SuiteCRM holds it until from_html writes "LEFÈVRE & O'BRIEN".
+        self::assertSame('LEFÈVRE &amp; O&#039;BRIEN', self::field($bean, 'last_name'));
     }
 
     public function testImportedContact(): void

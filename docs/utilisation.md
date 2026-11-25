@@ -25,7 +25,8 @@ utilisateurs ne sont pas concernés.
 
 Les contacts **déjà présents** sont convertis une fois : un contact « durand » s'affiche
 « DURAND » dès l'installation, sans que personne n'ait à le rouvrir. Leur date de
-modification ne change pas.
+modification ne change pas. Les contacts supprimés sont convertis aussi : restaurés, ils
+reviennent en majuscules.
 
 ## Réglages
 
@@ -39,6 +40,7 @@ Aucune.
 
 - Seuls les contacts sont concernés.
 - Les accents sont gardés : impossible d'obtenir « LEFEVRE » au lieu de « LEFÈVRE ».
+- Le « ß » allemand devient « SS » : « Strauß » s'enregistre « STRAUSS ».
 - Désinstaller l'extension ne remet pas les noms en minuscules : SuiteCRM ne garde pas leur
   ancienne écriture.
 - Un nom modifié directement dans la base de données, sans passer par SuiteCRM, n'est mis

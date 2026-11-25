@@ -23,8 +23,8 @@ La CI relance les mêmes contrôles sur chaque pull request.
   accents, particules, noms composés) et les cas limites (vide, espaces, chiffres,
   noms encodés tels que SuiteCRM les tient avant l'enregistrement) ;
 - `tests/ContactSaveTest.php` : le hook appelé comme SuiteCRM l'appelle (`$bean`,
-  `'before_save'`, les arguments de `save()` ou `null`), nom encodé par SuiteCRM, prénom inchangé, nom vide laissé
-  tel quel.
+  `'before_save'`, les arguments de `save()` ou `null`), nom encodé par SuiteCRM et
+  ré-encodé, prénom inchangé, nom vide laissé tel quel.
 
 SuiteCRM n'est pas installé pour les tests : `tests/fixtures/SugarBean.php` en donne une
 version minimale.

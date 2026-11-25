@@ -28,7 +28,9 @@ dans `cleanBean()` de `SugarBean::save`), parfois deux fois : « lefèvre » vau
 ligne (`from_html`) : la base stocke les noms en clair. `LastName::upper` décode donc le nom
 (jusqu'à trois fois), puis le met en majuscules, et rend du texte en clair. Mettre en
 majuscules sans décoder laisserait « è » en minuscule (`&egrave;`) et abîmerait « & »
-(`&AMP;`), ce qu'a montré l'essai dans SuiteCRM. Le script d'installation, qui lit les
+(`&AMP;`), ce qu'a montré l'essai dans SuiteCRM. Le hook ré-encode ensuite le résultat
+(`htmlspecialchars`, `ENT_QUOTES`) : les hooks suivants et les notifications voient la
+forme habituelle, et `from_html` écrit le nom en clair. Le script d'installation, qui lit les
 noms en clair dans la base, applique la même règle.
 
 La mise en majuscules utilise `mb_strtoupper` (UTF-8) : les accents sont gardés
@@ -56,5 +58,7 @@ contacts s'enregistrent comme ils sont tapés.
 
 - Le scanner du Chargeur de module refuse les fonctions à callback
   (`preg_replace_callback`, `array_map`…) : s'en passer.
+- `SugarBean::saveFields()`, utilisé seulement par l'outil de réparation
+  `NormalizeRecords`, enregistre sans `before_save` : il ne met pas en majuscules.
 - SuiteCRM ne charge que le fichier déclaré dans le hook : `ContactSave.php` charge
   lui-même `LastName.php`.

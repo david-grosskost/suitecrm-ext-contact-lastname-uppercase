@@ -21,7 +21,10 @@ final class ContactSave
             return;
         }
 
-        self::write($bean, 'last_name', LastName::upper($name));
+        // Encoded again, as SuiteCRM holds values during save: the hooks run
+        // after this one see the usual form, and from_html decodes it when the
+        // row is written.
+        self::write($bean, 'last_name', htmlspecialchars(LastName::upper($name), ENT_QUOTES, 'UTF-8'));
     }
 
     private static function write(\SugarBean $bean, string $field, string $value): void
